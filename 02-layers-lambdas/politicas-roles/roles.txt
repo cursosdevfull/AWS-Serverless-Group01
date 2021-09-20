@@ -1,0 +1,5 @@
+role: aws-group-role-lambdas-channel-dev
+policy: AWS-GROUP01-POLICY-LAMBDA-CHANNEL
+
+role: group01-medics-business-dev-dev-us-east-2-lambdaRole
+policy: group01-medics-business-dev-dev-lambda
