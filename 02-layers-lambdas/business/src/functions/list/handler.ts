@@ -1,16 +1,24 @@
 import 'source-map-support/register';
 import { middyfy } from '@libs/lambda';
+import { DB } from 'npm-curso/lib';
 
 const list = async () => {
-  const listMedics = [
-    { id: 1, name: 'Medic 01' },
-    { id: 2, name: 'Medic 02' },
-    { id: 3, name: 'Medic 03' },
-    { id: 4, name: 'Medic 04' },
-  ];
-  return {
-    result: listMedics,
-  };
+  const credentials = await DB.getCredencials('dev/rds');
+  Object.assign(credentials, { database: 'db_citas' });
+  console.log('credentials', credentials);
+
+  const connection = await DB.getConnection(credentials);
+  console.log('connection', connection);
+  const result = await DB.executeStatement(
+    connection,
+    'select idMedico, nombreCompleto from medico'
+  );
+
+  console.log('result', result);
+
+  connection.end();
+
+  return result;
 };
 
 export const main = middyfy(list);

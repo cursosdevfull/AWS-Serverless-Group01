@@ -34,6 +34,9 @@ const serverlessConfiguration: AWS = {
       name: 'group01-${self:provider.stage}-lambda-${self:custom.lambda.type}',
       serverSideEncryption: 'AES256',
     },
+    iam: {
+      role: 'arn:aws:iam::282865065290:role/aws-group-role-lambdas-${self:custom.lambda.type}-${self:provider.stage}',
+    },
     lambdaHashingVersion: '20201221',
   },
   functions: { list },
