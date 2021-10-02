@@ -1,1 +1,0 @@
-# AWS-Serverless-Group01
