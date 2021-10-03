@@ -10,10 +10,7 @@ const sentEmail = async (event) => {
   const { subject, recipient, body } = JSON.parse(event.Records[0].body);
   const data = await s3.getObject(paramsFile).promise();
   let bodyHtml = data.Body.toString('utf-8');
-  console.log('antes', bodyHtml);
   bodyHtml = velocityjs.render(bodyHtml, { recipient });
-  console.log({ recipient });
-  console.log('después', bodyHtml);
 
   const params = {
     Source: 'sergiohidalgocaceres@gmail.com',
