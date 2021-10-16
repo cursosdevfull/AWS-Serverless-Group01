@@ -1,0 +1,22 @@
+{
+  "serverlessConsole.services": [
+    {
+      "type": "custom",
+      "title": "Destination",
+      "timeOffsetInMs": 0,
+      "awsProfile": "default",
+      "items": [
+        {
+          "title": "/aws/lambda/snssqslambdav4-dev-destination",
+          "tabs": [
+            {
+              "region": "us-east-2",
+              "title": "dev",
+              "logs": "/aws/lambda/snssqslambdav4-dev-destination"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

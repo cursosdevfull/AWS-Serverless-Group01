@@ -3,7 +3,7 @@ import destination from '@functions/destination';
 import notify from '@functions/notify';
 
 const serverlessConfiguration: AWS = {
-  service: 'snssqslambdav2',
+  service: 'snssqslambdav4',
   frameworkVersion: '2',
   custom: {
     esbuild: {
@@ -14,6 +14,14 @@ const serverlessConfiguration: AWS = {
       target: 'node14',
       define: { 'require.resolve': undefined },
       platform: 'node',
+    },
+    sns: {
+      arn: {
+        Ref: 'SNSSQS',
+      },
+      topicName: {
+        'Fn::GetAtt': ['SNSSQS', 'TopicName'],
+      },
     },
   },
   plugins: ['serverless-esbuild'],
@@ -28,8 +36,8 @@ const serverlessConfiguration: AWS = {
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
       NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
-      SNS_PUBLISH: '${cf:snssqslambdav2-dev.SNSSQSArn}',
-      SNS_TOPIC_NAME: '${cf:snssqslambdav2-dev.SNSSQSTopicName}',
+      SNS_PUBLISH: '${self:custom.sns.arn}',
+      SNS_TOPIC_NAME: '${self:custom.sns.topicName}',
     },
     lambdaHashingVersion: '20201221',
     iam: {
@@ -38,7 +46,7 @@ const serverlessConfiguration: AWS = {
           {
             Effect: 'Allow',
             Action: 'SNS:Publish',
-            Resource: ['${cf:snssqslambdav2-dev.SNSSQSArn}'],
+            Resource: ['${self:custom.sns.arn}'],
           },
         ],
       },
@@ -66,17 +74,29 @@ const serverlessConfiguration: AWS = {
           TopicName: 'SNSSQS',
         },
       },
-    },
-    Outputs: {
-      SNSSQSArn: {
-        Value: { Ref: 'SNSSQS' },
-        Export: { Name: 'SNSSQSArn' },
-      },
-      SNSSQSTopicName: {
-        Value: {
-          'Fn::GetAtt': ['SNSSQS', 'TopicName'],
+      SQSQueuePolicy: {
+        Type: 'AWS::SQS::QueuePolicy',
+        Properties: {
+          Queues: [{ Ref: 'SQSLambda' }],
+          PolicyDocument: {
+            Version: '2012-10-17',
+            Statement: [
+              {
+                Effect: 'Allow',
+                Action: ['sqs:SendMessage'],
+                Resource: '*',
+                Principal: '*',
+                Condition: {
+                  ArnEquals: {
+                    'aws:SourceArn': {
+                      Ref: 'SNSSQS',
+                    },
+                  },
+                },
+              },
+            ],
+          },
         },
-        Export: { Name: 'SNSSQSTopicName' },
       },
     },
   },
