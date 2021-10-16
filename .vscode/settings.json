@@ -17,6 +17,60 @@
           ]
         }
       ]
+    },
+    {
+      "type": "custom",
+      "title": "Peruana",
+      "timeOffsetInMs": 0,
+      "awsProfile": "default",
+      "items": [
+        {
+          "title": "/aws/lambda/eventBrigde-dev-peruana",
+          "tabs": [
+            {
+              "region": "us-east-2",
+              "title": "dev",
+              "logs": "/aws/lambda/eventBrigde-dev-peruana"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "custom",
+      "title": "Mexicana",
+      "timeOffsetInMs": 0,
+      "awsProfile": "default",
+      "items": [
+        {
+          "title": "/aws/lambda/eventBrigde-dev-mexicana",
+          "tabs": [
+            {
+              "region": "us-east-2",
+              "title": "dev",
+              "logs": "/aws/lambda/eventBrigde-dev-mexicana"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "custom",
+      "title": "Tarea Programada",
+      "timeOffsetInMs": 0,
+      "awsProfile": "default",
+      "items": [
+        {
+          "title": "/aws/lambda/tareaprogramada-dev-job",
+          "tabs": [
+            {
+              "region": "us-east-2",
+              "title": "dev",
+              "logs": "/aws/lambda/tareaprogramada-dev-job"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
