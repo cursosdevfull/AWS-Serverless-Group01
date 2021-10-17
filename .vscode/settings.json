@@ -71,6 +71,24 @@
           ]
         }
       ]
+    },
+    {
+      "type": "custom",
+      "title": "s3",
+      "timeOffsetInMs": 0,
+      "awsProfile": "default",
+      "items": [
+        {
+          "title": "/aws/lambda/s3eventbucket-dev-eventos3",
+          "tabs": [
+            {
+              "region": "us-east-2",
+              "title": "dev",
+              "logs": "/aws/lambda/s3eventbucket-dev-eventos3"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
