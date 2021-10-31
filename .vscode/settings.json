@@ -89,6 +89,78 @@
           ]
         }
       ]
+    },
+    {
+      "type": "custom",
+      "title": "Trigger Step Functions",
+      "timeOffsetInMs": 0,
+      "awsProfile": "default",
+      "items": [
+        {
+          "title": "/aws/lambda/stepTest-dev-trigger",
+          "tabs": [
+            {
+              "region": "us-east-2",
+              "title": "dev",
+              "logs": "/aws/lambda/stepTest-dev-trigger"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "custom",
+      "title": "Step01",
+      "timeOffsetInMs": 0,
+      "awsProfile": "default",
+      "items": [
+        {
+          "title": "/aws/lambda/stepTest-dev-step01",
+          "tabs": [
+            {
+              "region": "us-east-2",
+              "title": "dev",
+              "logs": "/aws/lambda/stepTest-dev-step01"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "custom",
+      "title": "Step03",
+      "timeOffsetInMs": 0,
+      "awsProfile": "default",
+      "items": [
+        {
+          "title": "/aws/lambda/stepTest-dev-step03",
+          "tabs": [
+            {
+              "region": "us-east-2",
+              "title": "dev",
+              "logs": "/aws/lambda/stepTest-dev-step03"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "custom",
+      "title": "Step04",
+      "timeOffsetInMs": 0,
+      "awsProfile": "default",
+      "items": [
+        {
+          "title": "/aws/lambda/stepTest-dev-step04",
+          "tabs": [
+            {
+              "region": "us-east-2",
+              "title": "dev",
+              "logs": "/aws/lambda/stepTest-dev-step04"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
