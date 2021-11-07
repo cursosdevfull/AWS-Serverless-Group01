@@ -1,0 +1,17 @@
+<div fxLayout fxLayoutAlign="center" style="padding-top: 50px">
+  <mat-card fxFlex="1 1 400px" class="mat-elevation-z12" fxLayout="column">
+    <h2>Listado de clientes</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let client of clients">
+          <td>{{ client.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-card>
+</div>
